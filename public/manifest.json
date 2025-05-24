@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Quick DeepL JP Translator",
+  "version": "0.1.0",
+  "description": "Translate selected text to Japanese with a draggable mini-panel.",
+  "action": { "default_popup": "popup.html" },
+  "background": { "service_worker": "service_worker.js", "type": "module" },
+  "permissions": ["storage", "activeTab", "contextMenus"],
+  "host_permissions": ["https://api-free.deepl.com/*"],
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.js"]
+  }],
+  "commands": {
+    "translate-selection": {
+      "suggested_key": { "default": "Ctrl+Shift+Y" },
+      "description": "Translate the selected text"
+    },
+    "toggle-panel": {
+      "suggested_key": { "default": "Ctrl+Shift+6" },
+      "description": "Show/Hide translation panel"
+    }
+  }
+}
